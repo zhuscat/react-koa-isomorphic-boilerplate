@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 require('babel-polyfill');
 
 require('babel-register')({
@@ -5,7 +6,7 @@ require('babel-register')({
   plugins: [
     'add-module-exports',
     ['babel-plugin-transform-require-ignore', {
-      extensions: ['.scss', '.css']
+      extensions: ['.scss', '.css'],
     }],
   ],
 });
@@ -16,15 +17,14 @@ require('asset-require-hook')({
   limit: 10000,
 });
 
-const app = require('../server');
+const app = require('../server/app');
 const webpack = require('webpack');
-const fs = require('fs');
-const path = require('path');
 const middlewareRegister = require('../server/middlewareRegister');
 const webpackMiddleware = require('koa-webpack-middleware');
+const config = require('../webpack.development.config');
+
 const devMiddleware = webpackMiddleware.devMiddleware;
 const hotMiddleware = webpackMiddleware.hotMiddleware;
-const config = require('../webpack.development.config');
 const compiler = webpack(config);
 
 app.use(devMiddleware(compiler, {
@@ -44,5 +44,5 @@ app.use(hotMiddleware(compiler, {
   hearbeat: 10 * 1000,
 }));
 middlewareRegister(app);
-console.log(`\n==> Listening on port 3000. Open up http://localhost:3000/ in your browser.\n`);
+console.log(`\n==> 🌏  Listening on port 3000. Open up http://localhost:3000/ in your browser.\n`);
 app.listen(3000);

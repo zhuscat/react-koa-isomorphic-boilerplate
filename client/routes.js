@@ -1,8 +1,8 @@
 import React from 'react';
-import App from './containers/App';
-import UserInfoContainer from './containers/UserInfoContainer';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import 'isomorphic-fetch';
+import App from './containers/App';
+import UserInfoContainer from './containers/UserInfoContainer';
 
 export default (
   <Router history={browserHistory}>

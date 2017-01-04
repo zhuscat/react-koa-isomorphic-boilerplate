@@ -1,5 +1,12 @@
-import Koa from 'koa';
+import http from 'http';
+import app from './app';
+import middlewareRegister from './middlewareRegister';
+import config from './config';
 
-const app = new Koa();
+app.env = 'production';
+middlewareRegister(app);
 
-export default app;
+const server = http.createServer(app.callback());
+server.listen(config.port, () => {
+  console.log(`\n==> 🌏  Listening on port ${config.port}. Open up http://localhost:${config.port}/ in your browser.\n`);
+});

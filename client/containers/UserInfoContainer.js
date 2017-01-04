@@ -1,6 +1,5 @@
-import React from 'react';
-import UserInfo from '../components/UserInfo';
 import { connect } from 'react-redux';
+import UserInfo from '../components/UserInfo';
 
 function mapStateToProps(state) {
   const { userInfo } = state;

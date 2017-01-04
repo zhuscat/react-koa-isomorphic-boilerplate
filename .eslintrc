@@ -1,0 +1,19 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "globals": {
+    "fetch": true
+  },
+  "rules":{
+    "no-console": 0,
+    "no-param-reassign": ["error", { "props": false }],
+    "no-underscore-dangle": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  }
+}
