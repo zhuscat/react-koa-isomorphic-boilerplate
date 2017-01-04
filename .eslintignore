@@ -1,3 +1,5 @@
 node_modules
 dist
 bin
+webpack.development.config.js
+webpack.production.config.js

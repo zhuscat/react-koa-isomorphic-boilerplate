@@ -8,13 +8,13 @@ module.exports = {
     // For old browsers
     'eventsource-polyfill',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-    './client/index.js'
+    './client/index.js',
   ],
   output: {
     path: path.resolve(__dirname, './public/static'),
     filename: '[name].js',
     chunkFilename: 'chunk.[name].js',
-    publicPath: '/build/'
+    publicPath: '/build/',
   },
   resolve: { extensions: ['', '.js', '.jsx'] },
   module: {
@@ -25,16 +25,16 @@ module.exports = {
         loader: 'babel',
         query: {
           presets: ['es2015', 'react', 'stage-0', 'react-hmre'],
-          plugins: ['transform-runtime', 'add-module-exports']
-        }
+          plugins: ['transform-runtime', 'add-module-exports'],
+        },
       },
       {
         test: /\.scss$/,
         loaders: [
           'style',
           'css',
-          'sass'
-        ]
+          'sass',
+        ],
       },
       { test: /\.woff2?$/, loader: 'url?limit=10000&minetype=application/font-woff' },
       { test: /\.ttf$/, loader: 'url?limit=10000&minetype=application/octet-stream' },
@@ -42,14 +42,14 @@ module.exports = {
       { test: /\.svg$/, loader: 'url?limit=10000&minetype=image/svg+xml' },
       { test: /\.(png|jpg|jpeg|gif)$/i, loader: 'url?limit=10000&name=[name].[ext]' },
       { test: /\.json$/, loader: 'json' },
-      { test: /\.html?$/, loader: 'file?name=[name].[ext]' }
-    ]
+      { test: /\.html?$/, loader: 'file?name=[name].[ext]' },
+    ],
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) })
-  ]
-}
+    new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) }),
+  ],
+};

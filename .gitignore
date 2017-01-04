@@ -16,3 +16,6 @@ tmp
 tmp/*
 .sass-cache/*
 npm-debug.log
+
+public/build
+dist
