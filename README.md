@@ -1,13 +1,13 @@
 # react-koa-isomorphic-boilerplate
 
-An isomorphic boilerplate for building server side rendering web app with koa2 + react + redux.
+An isomorphic boilerplate for building server side rendering web app with Koa2 + React + Redux.
 
 ## Features
 
 - React Router + Koa Router (handle url like `/api/*`)
 - Webpack Hot Module Reload(HMR) when changing client side codes (in development mode)
 - Server automatically restart using `nodemon` when changing server side codes (in development mode)
-- Write style using Sass (You are welcome to use other languages like `less`, just change the configuration)
+- Write style using `Sass` (You are welcome to use other languages like `Less`, just change the configuration)
 - Using ESLint to check JavaScript codes
 
 ## Getting Started
