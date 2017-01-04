@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
-  name: 'backend dev hot middlware',
   devtool: 'eval-source-map',
   entry: [
     // For old browsers
@@ -21,7 +20,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx|.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel',
         query: {
@@ -52,6 +51,10 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      '__SERVER__': false,
+      '__CLIENT__': true,
+    }),
   ],
 };
