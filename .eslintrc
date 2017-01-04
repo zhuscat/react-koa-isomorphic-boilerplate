@@ -8,7 +8,8 @@
   "parser": "babel-eslint",
   "extends": "airbnb",
   "globals": {
-    "fetch": true
+    "__SERVER__": true,
+    "__CLIENT__": true
   },
   "rules":{
     "no-console": 0,

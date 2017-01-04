@@ -17,8 +17,6 @@ export default class UserInfo extends Component {
 
   render() {
     const { name, website } = this.props;
-    console.log(name);
-    console.log(website);
     return (
       <div className="user-info">
         <p className="user-info__name">{ name }</p>

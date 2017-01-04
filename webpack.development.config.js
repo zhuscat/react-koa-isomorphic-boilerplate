@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
   name: 'backend dev hot middlware',
@@ -46,6 +47,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new ProgressBarPlugin({ summary: false }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.HotModuleReplacementPlugin(),

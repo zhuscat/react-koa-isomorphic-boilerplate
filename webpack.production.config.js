@@ -54,6 +54,7 @@ const clientConfig = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
       __SERVER__: false,
+      __CLIENT__: true,
     }),
   ],
 };
@@ -113,7 +114,11 @@ const serverConfig = {
     plugins: [
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.optimize.DedupePlugin(),
-      new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) }),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('production'),
+        __SERVER__: true,
+        __CLIENT__: false,
+      }),
     ],
   },
 };

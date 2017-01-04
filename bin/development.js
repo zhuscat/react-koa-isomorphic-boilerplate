@@ -1,4 +1,6 @@
 #! /usr/bin/env node
+process.env.NODE_ENV = 'development';
+
 require('babel-polyfill');
 
 require('babel-register')({
@@ -7,6 +9,10 @@ require('babel-register')({
     'add-module-exports',
     ['babel-plugin-transform-require-ignore', {
       extensions: ['.scss', '.css'],
+    }],
+    ['inline-replace-variables', {
+      __SERVER__: true,
+      __CLIENT__: false,
     }],
   ],
 });
@@ -19,9 +25,12 @@ require('asset-require-hook')({
 
 const app = require('../server/app');
 const webpack = require('webpack');
+const path = require('path');
+const fs = require('fs');
 const middlewareRegister = require('../server/middlewareRegister');
 const webpackMiddleware = require('koa-webpack-middleware');
 const config = require('../webpack.development.config');
+const serverConfig = require('../server/config');
 
 const devMiddleware = webpackMiddleware.devMiddleware;
 const hotMiddleware = webpackMiddleware.hotMiddleware;
@@ -38,11 +47,9 @@ app.use(devMiddleware(compiler, {
     colors: true,
   },
 }));
-app.use(hotMiddleware(compiler, {
-  log: console.log,
-  path: '/__webpack_hmr',
-  hearbeat: 10 * 1000,
-}));
+app.use(hotMiddleware(compiler));
 middlewareRegister(app);
-console.log(`\n==> 🌏  Listening on port 3000. Open up http://localhost:3000/ in your browser.\n`);
-app.listen(3000);
+app.listen(serverConfig.port, () => {
+  console.log(`\n==> ✅  Server is listening on port ${serverConfig.port}`);
+  console.log(`\n==> 🌏  Open up http://localhost:${serverConfig.port}/ in your browser.\n`);
+});

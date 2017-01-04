@@ -12,14 +12,12 @@
     <![endif]-->
   </head>
   <body>
-    <div id="root">
-      <%- app %>
-    </div>
+    <div id="root"><%- app %></div>
     <script>
       try {
         window.__REDUX_STATE__ = <%- JSON.stringify(reduxState) %>;
       } catch (e) {
-        console.warn('error in getting server redux data');
+        console.warn('an error occurs during getting redux state from server');
       }
     </script>
     <script src="/build/main.js"></script>
