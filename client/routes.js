@@ -1,6 +1,5 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import 'isomorphic-fetch';
 import App from './containers/App';
 import UserInfoContainer from './containers/UserInfoContainer';
 

@@ -111,16 +111,16 @@ const serverConfig = {
       { test: /\.(png|jpg|jpeg|gif|webp)$/i, loader: 'url?limit=10000' },
       { test: /\.json$/, loader: 'json' },
     ],
-    plugins: [
-      new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.optimize.DedupePlugin(),
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production'),
-        __SERVER__: true,
-        __CLIENT__: false,
-      }),
-    ],
   },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      __SERVER__: true,
+      __CLIENT__: false,
+    }),
+  ],
 };
 
 module.exports = [clientConfig, serverConfig];
