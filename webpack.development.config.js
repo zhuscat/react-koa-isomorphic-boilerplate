@@ -40,13 +40,12 @@ module.exports = {
       { test: /\.ttf$/, loader: 'url?limit=10000&minetype=application/octet-stream' },
       { test: /\.eot$/, loader: 'file' },
       { test: /\.svg$/, loader: 'url?limit=10000&minetype=image/svg+xml' },
-      { test: /\.(png|jpg|jpeg|gif)$/i, loader: 'url?limit=10000&name=[name].[ext]' },
+      { test: /\.(png|jpg|jpeg|gif|webp)$/i, loader: 'url?limit=10000&name=[name].[ext]' },
       { test: /\.json$/, loader: 'json' },
       { test: /\.html?$/, loader: 'file?name=[name].[ext]' },
     ],
   },
   plugins: [
-    new ProgressBarPlugin({ summary: false }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -56,5 +55,6 @@ module.exports = {
       '__SERVER__': false,
       '__CLIENT__': true,
     }),
+    new ProgressBarPlugin({ summary: false }),
   ],
 };

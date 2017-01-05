@@ -59,10 +59,10 @@ export default async (ctx, next) => {
       await next();
     }
   } catch (e) {
-    console.log('an error occurs during server rendering: %s', e.stack);
+    console.log('error occurred during server rendering: %s', e.stack);
 
     await ctx.render('500', {
-      msg: false,
+      message: e.stack,
     });
   }
 };
