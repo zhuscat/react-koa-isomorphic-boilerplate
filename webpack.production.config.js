@@ -76,7 +76,7 @@ const serverConfig = {
   externals: [
     function findExternals(context, request, callback) {
       const pathStart = request.split('/')[0];
-      if (pathStart && (pathStart[0] === '!') || nodeModules.indexOf(pathStart) >= 0 && request !== 'webpack/hot/signal.js') {
+      if (pathStart && nodeModules.indexOf(pathStart) >= 0) {
         callback(null, 'commonjs ' + request);
       } else {
         callback();
